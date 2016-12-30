@@ -2,8 +2,11 @@
 import PyQt4.QtCore
 import PyQt4.QtGui
 
+print '?????'
+
 # pyqtgraph
-sys.path.append('./pyqtgraph-0.9.10/pyqtgraph')
+# import sys
+#sys.path.append('~/Desktop/Programming/projects/spectranalyzer/pyqtgraph-0.9.10')
 
 class MainView(PyQt4.QtGui.QMainWindow):
     def __init__(self):
@@ -21,6 +24,11 @@ class MainView(PyQt4.QtGui.QMainWindow):
         return
 
     def setup_plot(self):
-        self._main_plot = pg.
+        self._main_plot = pg.PlotWidget(parent = self)
+        self._main_plot.setLabel('bottom', text = 'Time (s)')
+        self._main_plot.setLabel('left', text = 'Signal')
+        self._main_plot.showGrid(x = True, y = True, alpha = 1.0)
+
+        self._main_plot_item = pg.PlotDataItem()
 
         return
