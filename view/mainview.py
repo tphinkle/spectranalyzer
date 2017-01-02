@@ -26,10 +26,10 @@ class MainView(PyQt4.QtGui.QMainWindow):
 
     def setup_buttons(self):
         self._start_button = PyQt4.QtGui.QPushButton("Start", parent = self)
-        self._start_button.setGeometry(0, 550, 50, 25)
+        self._start_button.setGeometry(175, 550, 50, 25)
 
         self._stop_button = PyQt4.QtGui.QPushButton("Stop", parent = self)
-        self._stop_button.setGeometry(100, 550, 50, 25)
+        self._stop_button.setGeometry(575, 550, 50, 25)
 
         return
 
@@ -38,7 +38,7 @@ class MainView(PyQt4.QtGui.QMainWindow):
         self._main_plot.setLabel('bottom', text = 'Time (s)')
         self._main_plot.setLabel('left', text = 'Signal')
         self._main_plot.showGrid(x = True, y = True, alpha = 1.0)
-        self._main_plot.setGeometry(0,0,640,480)
+        self._main_plot.setGeometry(80,30,640,480)
 
         self._main_plot_item = pg.PlotDataItem()
 

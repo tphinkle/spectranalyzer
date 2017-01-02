@@ -32,7 +32,7 @@ class MicController(PyQt4.QtCore.QObject):
                 self.start())
 
         self._main_view._stop_button.clicked.connect(lambda: \
-                self._mic_model.stop())
+                self.stop())
 
 
 
@@ -44,19 +44,15 @@ class MicController(PyQt4.QtCore.QObject):
 
 
 
-        print 'trying to start'
-        #self._mic_thread = PyQt4.QtCore.QThread()
-
         self.connect(self._mic_model, PyQt4.QtCore.SIGNAL("new_data(PyQt_PyObject)"), self.plot_new_data)
         self._mic_model.start()
 
-        #self.connect(self._mic_thread, PyQt4.QtCore.SIGNAL('started()'), self._mic_model.start)
 
+    @PyQt4.QtCore.pyqtSlot()
+    def stop(self):
+        print 'trying to quit'
+        self._mic_model.quit()
 
-
-        #self._mic_thread.start()
-
-        #self._mic_thread.start()
 
 
 
