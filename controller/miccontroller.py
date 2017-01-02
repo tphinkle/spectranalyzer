@@ -58,5 +58,6 @@ class MicController(PyQt4.QtCore.QObject):
 
     @PyQt4.QtCore.pyqtSlot()
     def plot_new_data(self, new_data):
-        self._main_view._main_plot_item.setData(new_data)
+        print new_data.shape
+        self._main_view._main_plot_item.setData(new_data[:,0], new_data[:,1])
         return

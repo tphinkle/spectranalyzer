@@ -33,7 +33,7 @@ class MicModel(PyQt4.QtCore.QThread):
 
 
         self._audio_range = 2500
-        
+
         self._audio_data = np.array([0 for i in range(self._audio_range)])
 
         self._buffer_head = 0
@@ -61,7 +61,11 @@ class MicModel(PyQt4.QtCore.QThread):
 
             self._buffer_head = (self._buffer_head + l)%self._audio_range
 
-            self.emit(PyQt4.QtCore.SIGNAL('new_data(PyQt_PyObject)'), self._audio_data)
+            self._time_data = np.array([i/8000.0 for i in xrange(self._audio_data.shape[0])])
+
+            self._data = np.hstack((self._time_data.reshape(-1,1), self._audio_data.reshape(-1,1)))
+
+            self.emit(PyQt4.QtCore.SIGNAL('new_data(PyQt_PyObject)'), self._data)
 
 
             time.sleep(.005)
